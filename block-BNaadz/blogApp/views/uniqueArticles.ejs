@@ -21,6 +21,9 @@
         <a href="/users/login">
           <button id="login_button">Login</button>
         </a>
+        <a href="/article/myarticles">
+          <button id="login_button">My Articles</button>
+        </a>
       </div>
     </header>
     <div class="articles_unique_box">
@@ -32,7 +35,7 @@
         <p class="likes_count">:<%=article.likes%></p>
       </div>
     </div>
-    <form action="/article/<%=articleData.id %>/comment" method="POST">
+    <form action="/article/<%=article.id %>/comment" method="POST">
       <textarea name="content" rows="3" placeholder="Add comments"></textarea>
       <input
         style="display: block; background-color: green; color: white"
@@ -42,9 +45,10 @@
     </form>
 
     <ul>
-      <% comment.forEach(function(comment){ %>
+      <% comments.forEach(function(comment){ %>
       <li class="titles_link"><%=comment.content %></li>
-
+      <a href="/comments/<%=comment.id %>/edit"><button>edit</button></a>
+      <a href="/comments/<%=comment.id %>/delete"><button>delete</button></a>
       <% }); %>
     </ul>
   </body>

@@ -10,6 +10,7 @@ const MongoStore = require("connect-mongo");
 var indexRouter = require("./routes/index");
 var articleRouter = require("./routes/article");
 var usersRouter = require("./routes/users");
+var commentsRouter = require("./routes/comments");
 
 // connect mongoose  to db before get request from app;
 
@@ -41,6 +42,7 @@ app.use(
 app.use("/", indexRouter);
 app.use("/article", articleRouter);
 app.use("/users", usersRouter);
+app.use("/comments", commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
