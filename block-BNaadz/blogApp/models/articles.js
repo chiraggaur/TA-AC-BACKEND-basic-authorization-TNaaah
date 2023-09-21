@@ -8,6 +8,7 @@ const articleSchema = new Schema({
   description: { type: String },
   likes: { type: Number },
   comments: Schema.Types.ObjectId,
+  userId: Schema.Types.ObjectId,
   author: { type: String },
   slug: { type: String, unique: true }, // unique doubt
 });

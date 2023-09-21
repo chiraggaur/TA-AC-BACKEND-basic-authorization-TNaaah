@@ -109,4 +109,13 @@ a {
 
 /* comments container  */
 
-
+#commentsEdit {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  margin: 200px auto;
+}
