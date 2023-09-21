@@ -18,8 +18,26 @@ router.post("/new", function (req, res, next) {
 // get articles listing
 router.get("/list", async function (req, res, next) {
   var data = await Article.find({});
+  console.log(req.session);
   res.render("articles", { articleData: data });
 });
+// my articles
+
+// router.get("/list/myarticles", async function (req, res, next) { // doubt
+//   req.body.userId = req.session.userId;
+//   // var data = await Article.find({});
+//   console.log(req.body);
+//   // Article.create(req.body).then((myarticles) => {
+//   //   try {
+//   //     console.log(myarticles);
+//   //     // res.redirect("/article/list/" + id);
+//   //   } catch (err) {
+//   //     return next(err);
+//   //   }
+//   // });
+// });
+// // res.render("myarticles", { articleData: data });
+
 // article details with  with id
 router.get("/list/:id", async function (req, res, next) {
   var id = req.params.id;
@@ -46,22 +64,5 @@ router.post("/:id/comment", auth.isUserLogged, function (req, res, next) {
     }
   });
 });
-
-// my articles list
-
-router.get(
-  "/list/:id/myarticles",
-  auth.isUserLogged,
-  async function (req, res, next) {
-    var id = req.params.id;
-    var articleData = await Article.findById(id);
-    var commentsData = await comments.find({ articleId: id });
-
-    res.render("uniqueArticles", {
-      article: articleData,
-      comments: commentsData,
-    });
-  }
-);
 
 module.exports = router;

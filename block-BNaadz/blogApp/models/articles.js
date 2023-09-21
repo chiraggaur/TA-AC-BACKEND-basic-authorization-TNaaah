@@ -10,6 +10,7 @@ const articleSchema = new Schema({
   comments: Schema.Types.ObjectId,
   userId: Schema.Types.ObjectId,
   author: { type: String },
+  userId: Schema.Types.ObjectId,
   slug: { type: String, unique: true }, // unique doubt
 });
 
