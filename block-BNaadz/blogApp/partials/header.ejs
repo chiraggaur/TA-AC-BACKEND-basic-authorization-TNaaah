@@ -12,27 +12,22 @@
         <h1 style="color: white">Blog App</h1>
       </div>
       <div class="Enter_Box">
+        <a href="/article/"
+          ><button id="artcileForm_button">Article Form</button></a
+        >
+        <% if(user){ %>
+        <nav>
+          <a href=""><%=user.firstname%></a>
+        </nav>
+        <% } else { %>
         <a href="/users/">
           <button id="register_button">Register</button>
         </a>
-
-        <button id="login_button">Login</button>
+        <a href="/users/login">
+          <button id="login_button">Login</button>
+        </a>
+        <% } %>
       </div>
     </header>
-    <div>
-      <h1 style="text-align: center; font-size: 30px">Login</h1>
-      <form id="register_Form" action="/users/login" method="POST">
-        <div>
-          <label>Email</label>
-          <input type="text" name="email" placeholder="email" />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="text" name="password" placeholder="password" />
-        </div>
-
-        <input type="submit" placeholder="Submit" />
-      </form>
-    </div>
   </body>
 </html>

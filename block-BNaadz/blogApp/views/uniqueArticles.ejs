@@ -12,24 +12,23 @@
         <h1 style="color: white">Blog App</h1>
       </div>
       <div class="Enter_Box">
+        <h1><%=user.firstname%></h1>
+        <a href="/article/"
+          ><button id="artcileForm_button">MyArticles</button></a
+        >
+
         <a href="/article/"
           ><button id="artcileForm_button">Article Form</button></a
         >
         <a href="/users/">
           <button id="register_button">Register</button>
         </a>
-        <a href="/users/login">
-          <button id="login_button">Login</button>
-        </a>
-        <a href="/article/">
-          <button id="login_button">My Articles</button>
-        </a>
       </div>
     </header>
     <div class="articles_unique_box">
       <h1><%=article.title%></h1>
-      <p><%=article.description%></p>
       <p><%=article.author%></p>
+      <p><%=article.description%></p>
       <div>
         <label> Likes </label>
         <p class="likes_count">:<%=article.likes%></p>

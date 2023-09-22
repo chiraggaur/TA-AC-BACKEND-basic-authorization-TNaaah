@@ -11,39 +11,31 @@ router.get("/", auth.isUserLogged, function (req, res, next) {
   res.render("articleForm");
 });
 // post artciles to data base
-router.post("/new", function (req, res, next) {
+router.post("/new", auth.isUserLogged, function (req, res, next) {
+  req.body.author = req.users._id;
   Article.create(req.body);
-  res.redirect("/");
+  res.redirect("/article/list");
 });
 // get articles listing
 router.get("/list", async function (req, res, next) {
   var data = await Article.find({});
-  console.log(req.session);
   res.render("articles", { articleData: data });
 });
-// my articles
-
-// router.get("/list/myarticles", async function (req, res, next) { // doubt
-//   req.body.userId = req.session.userId;
-//   // var data = await Article.find({});
-//   console.log(req.body);
-//   // Article.create(req.body).then((myarticles) => {
-//   //   try {
-//   //     console.log(myarticles);
-//   //     // res.redirect("/article/list/" + id);
-//   //   } catch (err) {
-//   //     return next(err);
-//   //   }
-//   // });
-// });
-// // res.render("myarticles", { articleData: data });
 
 // article details with  with id
 router.get("/list/:id", async function (req, res, next) {
   var id = req.params.id;
   var articleData = await Article.findById(id);
   var commentsData = await comments.find({ articleId: id });
-  var commentsData = await users.find({ userId: id });
+  res.render("uniqueArticles", {
+    article: articleData,
+    comments: commentsData,
+  });
+});
+router.get("/myarticle/:id", async function (req, res, next) {
+  var id = req.params.id; // association of articles with user pending
+  var articleData = await Article.findById(id);
+  var commentsData = await comments.find({ articleId: id });
   res.render("uniqueArticles", {
     article: articleData,
     comments: commentsData,
@@ -52,13 +44,16 @@ router.get("/list/:id", async function (req, res, next) {
 
 // user comments routes
 
-router.post("/:id/comment", auth.isUserLogged, function (req, res, next) {
+router.post("/:id/comment", function (req, res, next) {
   var id = req.params.id;
   req.body.articleId = id;
   comments.create(req.body).then((comment) => {
     try {
-      // console.log(comment);
-      res.redirect("/article/list/" + id);
+      if (comment) {
+        res.redirect("/article/list/" + id);
+      } else {
+        res.render("something went wrong");
+      }
     } catch (err) {
       return next(err);
     }

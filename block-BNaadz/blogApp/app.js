@@ -6,7 +6,7 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 var session = require("express-session");
 const MongoStore = require("connect-mongo");
-
+var auth = require("./middlewares/auth");
 var indexRouter = require("./routes/index");
 var articleRouter = require("./routes/article");
 var usersRouter = require("./routes/users");
@@ -37,7 +37,8 @@ app.use(
     store: MongoStore.create(mongoose.connection),
   })
 );
-
+// user info check
+app.use(auth.userInfo);
 //routes
 app.use("/", indexRouter);
 app.use("/article", articleRouter);
