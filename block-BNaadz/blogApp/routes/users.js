@@ -48,21 +48,16 @@ router.post("/login", function (req, res, next) {
         if (err) return next(err);
         if (!result) {
           res.redirect("/users/login");
+        } else {
+          // persist user logged in information
+          req.session.userId = user._id;
+          res.redirect("/article/list");
         }
-        // persist user logged in information
-        req.session.userId = user._id;
-        res.redirect("/article/list");
       });
     });
   } catch (error) {
     return next(err);
   }
-});
-
-// user comments routes
-
-router.post("/:id/comments", async function (req, res, next) {
-  // unique email only
 });
 
 module.exports = router;
