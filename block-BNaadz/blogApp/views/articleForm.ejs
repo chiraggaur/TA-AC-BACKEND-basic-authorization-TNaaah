@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header_logo">
+        <h1 style="color: white">Blog App</h1>
+      </div>
+      <div class="Enter_Box">
+        <a href="/users/">
+          <button id="register_button">Register</button>
+        </a>
+        <a href="/users/login">
+          <button id="login_button">Login</button>
+        </a>
+      </div>
+    </header>
+    <div>
+      <h1 style="text-align: center; font-size: 30px">Blogs</h1>
+      <form id="article_Form" action="/article/new" method="POST">
+        <div>
+          <label>Title</label>
+          <input type="text" name="title" placeholder="Title" />
+        </div>
+        <div>
+          <label>Description</label>
+          <input type="text" name="description" placeholder="Description" />
+        </div>
+        <div>
+          <label>Likes</label>
+          <input type="number" name="likes" placeholder="Likes" />
+        </div>
+        <input type="submit" placeholder="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

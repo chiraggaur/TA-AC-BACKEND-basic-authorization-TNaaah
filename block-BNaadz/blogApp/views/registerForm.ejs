@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header_logo">
+        <h1 style="color: white">Blog App</h1>
+      </div>
+      <div class="Enter_Box">
+        <a href="/users/login">
+          <button id="login_button">Login</button>
+        </a>
+      </div>
+    </header>
+    <div>
+      <h1 style="text-align: center; font-size: 30px">Blogs</h1>
+      <form id="register_Form" action="/users/new" method="POST">
+        <div>
+          <label>Firstname</label>
+          <input type="text" name="firstname" placeholder="firstName" />
+        </div>
+        <div>
+          <label>Lastname</label>
+          <input type="text" name="lastname" placeholder="lastname" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="text" name="email" placeholder="email" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="text" name="password" placeholder="password" />
+        </div>
+        <div>
+          <label>City</label>
+          <input type="text" name="city" placeholder="city" />
+        </div>
+        <input type="submit" placeholder="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

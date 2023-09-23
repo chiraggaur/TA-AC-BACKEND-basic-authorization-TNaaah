@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header_logo">
+        <h1 style="color: white">Blog App</h1>
+      </div>
+      <div class="Enter_Box">
+        <a href="/users/">
+          <button id="register_button">Register</button>
+        </a>
+        <a href="/users/login">
+          <button id="login_button">Login</button>
+        </a>
+      </div>
+    </header>
+    <div class="articles_container">
+      <ul>
+        <% articleData.forEach(function(article){ %>
+        <a href="/article/list/<%=article.id %>" style="text-decoration: none"
+          ><li class="titles_link"><%=article.title %></li></a
+        >
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>
