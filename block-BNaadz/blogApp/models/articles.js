@@ -12,7 +12,7 @@ const articleSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "User" },
     slug: { type: String, unique: true }, // unique doubt
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
 // pre save for slug
